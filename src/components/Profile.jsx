@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Dropdown } from "react-bootstrap";
 import avatar from "../assets/img/avatar.png";
 
 const Profile = () => (

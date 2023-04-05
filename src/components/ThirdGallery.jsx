@@ -25,7 +25,11 @@ const ThirdGallery = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <Container className="d-flex justify-content-center align-items-center py-5 my-5">
+        <Spinner animation="border" role="status" variant="danger"></Spinner>
+      </Container>
+    );
   }
 
   if (error) {

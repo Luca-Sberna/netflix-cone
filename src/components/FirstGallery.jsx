@@ -25,7 +25,11 @@ const FirstGallery = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <Container className="d-flex justify-content-center align-items-center py-5 my-5">
+        <Spinner animation="border" role="status" variant="danger"></Spinner>
+      </Container>
+    );
   }
 
   if (error) {
@@ -33,33 +37,35 @@ const FirstGallery = () => {
   }
 
   return (
-    <Container fluid>
-      <Row className="justify-content-center ">
-        <h2 className="text-light text-start p-2">Harry Potter Saga</h2>
-        <Col xs={12}>
-          <Carousel indicators={null}>
-            {[...Array(Math.ceil(movies.length / 3))].map((_, index) => (
-              <Carousel.Item key={index}>
-                <Row>
-                  {movies.slice(index * 3, (index + 1) * 6).map((movie) => (
-                    <Col xs={2} key={movie.imdbID}>
-                      <Link to={`/movie-details/${movie.imdbID}`}>
-                        {" "}
-                        <img
-                          src={movie.Poster}
-                          alt={movie.Title}
-                          className="img-fluid h-100"
-                        />
-                      </Link>
-                    </Col>
-                  ))}
-                </Row>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Container fluid>
+        <Row className="justify-content-center ">
+          <h2 className="text-light text-start p-2">Harry Potter Saga</h2>
+          <Col xs={12}>
+            <Carousel indicators={null}>
+              {[...Array(Math.ceil(movies.length / 3))].map((_, index) => (
+                <Carousel.Item key={index}>
+                  <Row>
+                    {movies.slice(index * 3, (index + 1) * 6).map((movie) => (
+                      <Col xs={2} key={movie.imdbID}>
+                        <Link to={`/movie-details/${movie.imdbID}`}>
+                          {" "}
+                          <img
+                            src={movie.Poster}
+                            alt={movie.Title}
+                            className="img-fluid h-100"
+                          />
+                        </Link>
+                      </Col>
+                    ))}
+                  </Row>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

@@ -13,6 +13,7 @@ import TvShows from './components/TvShows';
 import NotFound from './components/NotFound';
 import MovieDetails from './components/MovieDetails';
 
+//cliccare la lente input search sulla navbar
 
 function App() {
   return (

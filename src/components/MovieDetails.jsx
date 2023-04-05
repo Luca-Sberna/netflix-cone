@@ -100,7 +100,7 @@ const MovieDetails = () => {
                     <Badge
                       pill
                       key={genre}
-                      className="bg-secondary my-1 mx-1 px-2 py-1"
+                      className="bg-secondary text-primary my-1 mx-1 px-2 py-1"
                     >
                       {genre}
                     </Badge>

@@ -7,8 +7,6 @@ import ThirdGallery from "./ThirdGallery";
 import MyFooter from "./MyFooter";
 
 const TvShows = () => {
-  const [selectedMovie, setSelectedMovie] = useState(null);
-
   return (
     <>
       <MyMain />

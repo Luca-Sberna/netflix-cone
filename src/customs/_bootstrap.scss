@@ -1,0 +1,57 @@
+// scss-docs-start import-stack
+// Configuration
+@import "bootstrap/scss/functions";
+// Include any default variable overrides here
+
+@import "variables"; /* gli override delle variabili bs ,per customizzare */
+
+@import "bootstrap/scss/variables";
+
+@import "maps"; /* gli override delle maps bs ,per customizzare */
+
+//Include any default map overrides here
+
+@import "bootstrap/scss/maps";
+
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Layout & components
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+//@import "tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+//@import "button-group";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+//@import "accordion";
+//@import "breadcrumb";
+//@import "pagination";
+//@import "badge";
+//@import "alert";
+//@import "progress";
+//@import "list-group";
+//@import "close";
+//@import "toasts";
+//@import "modal";
+//@import "tooltip";
+//@import "popover";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/spinners";
+//@import "offcanvas";
+//@import "placeholders";
+
+// Helpers
+@import "bootstrap/scss/helpers";
+
+// Utilities
+@import "bootstrap/scss/utilities/api";
+// scss-docs-end import-stack

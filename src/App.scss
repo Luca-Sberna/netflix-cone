@@ -1,0 +1,158 @@
+@import "./customs/bootstrap";
+
+*,
+:before,
+:after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $primary;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+header {
+  padding: 10px 0 0 0;
+  display: flex;
+  width: 100%;
+  top: 0;
+  z-index: 99;
+  .container-logo {
+    object-fit: cover;
+    width: 100px;
+    max-height: 100%;
+
+    padding-top: 0px;
+
+    .container-logo img {
+      height: 35px;
+    }
+  }
+
+  .first-nav,
+  .second-nav {
+    a:not(.dropdown a) {
+      color: $light;
+      text-decoration: none;
+      background-color: $primary;
+      transition: 0.5s;
+      &:hover {
+        font-weight: 400;
+        color: $secondary;
+        transform: scale(1.2);
+        transition: 0.5s ease-in-out;
+        box-shadow: 0.1rem 0rem 2rem 0.1rem $primary;
+      }
+    }
+  }
+}
+
+main {
+  h2 {
+    color: $secondary;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+  }
+  .card {
+    transition: 0.5s;
+    &:hover {
+      z-index: 101;
+      transform: scale(1.1);
+      transition: 0.5s;
+      box-shadow: 0.1rem 0rem 2rem 0.1rem $primary;
+    }
+  }
+  #cont-profile {
+    width: 35rem;
+    #cont-profile-2 {
+      width: 35rem;
+    }
+  }
+  .container {
+    width: 35rem;
+  }
+  a {
+    color: $blue;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    height: 2rem;
+    top: 61%;
+
+    width: 0.8rem;
+    &:hover {
+      transform: scale(2.5);
+    }
+  }
+}
+.maturity-set {
+  width: 13rem;
+}
+.name-user {
+  width: 19rem;
+}
+img {
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+  }
+}
+.movie-poster {
+  height: 25rem;
+  width: 19.2rem;
+}
+/* tutta la zona footer e link  */
+
+.link {
+  padding: 50px 50px 0 150px;
+}
+
+.sub-links ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.sub-links a {
+  text-decoration: none;
+  color: $gray-700;
+  text-decoration: none;
+}
+
+.sub-links a:hover {
+  font-weight: 500;
+  color: $secondary;
+}
+
+.logos a {
+  padding: 10px;
+}
+.logos i {
+  color: $gray-500;
+  font-size: 1.8rem;
+  padding-bottom: 1rem;
+}
+
+.logo {
+  color: var(--dark);
+}
+
+footer {
+  text-align: left;
+  color: $gray-700;
+  button {
+    color: $gray-700;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+}

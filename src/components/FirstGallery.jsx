@@ -1,82 +1,66 @@
 import { Container, Row, Col, Carousel, Spinner } from "react-bootstrap";
-import { Component } from "react";
+import { Component, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-class FirstGallery extends Component {
-  state = {
-    movies: [],
-    loading: true,
-    error: null,
-  };
+const FirstGallery = () => {
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  async componentDidMount() {
-    const { inputSearchValue } = this.props;
-    try {
-      const response = await fetch(
-        "https://www.omdbapi.com/?apikey=60534065&s=harry%20potter&type=movie",
-      );
-      if (response.ok) {
+  useEffect(() => {
+    async function getMovies() {
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          "https://www.omdbapi.com/?apikey=60534065&s=harry potter&type=movie",
+        );
         const data = await response.json();
-        const movies = data.Search.slice(0, 6);
-        this.setState({ movies, loading: false });
+        setMovies(data.Search.slice(0, 6));
+      } catch (error) {
+        setError(error);
       }
-    } catch (error) {
-      this.setState({ error, loading: false });
+      setIsLoading(false);
     }
+    getMovies();
+  }, []);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
 
-  render() {
-    const { movies, loading, error } = this.state;
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
-    if (error) {
-      return <div>Render Error: {error.message}</div>;
-    }
-
-    if (loading) {
-      return (
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 text-center">
-              <Spinner
-                role="status"
-                animation="border"
-                variant="danger"
-              ></Spinner>
-              <span className="sr-only text-center text-light fs-1 fw-bold ms-1">
-                Loading...
-              </span>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <Container fluid>
-        <Row className="justify-content-center ">
-          <h2 className="text-light text-start p-2">Harry Potter Saga</h2>
-          <Col xs={12}>
-            <Carousel indicators={null}>
-              {[...Array(Math.ceil(movies.length / 3))].map((_, index) => (
-                <Carousel.Item key={index}>
-                  <Row>
-                    {movies.slice(index * 3, (index + 1) * 6).map((movie) => (
-                      <Col xs={2} key={movie.imdbID}>
+  return (
+    <Container fluid>
+      <Row className="justify-content-center ">
+        <h2 className="text-light text-start p-2">Harry Potter Saga</h2>
+        <Col xs={12}>
+          <Carousel indicators={null}>
+            {[...Array(Math.ceil(movies.length / 3))].map((_, index) => (
+              <Carousel.Item key={index}>
+                <Row>
+                  {movies.slice(index * 3, (index + 1) * 6).map((movie) => (
+                    <Col xs={2} key={movie.imdbID}>
+                      <Link to={`/movie-details/${movie.imdbId}`}>
+                        {" "}
                         <img
                           src={movie.Poster}
                           alt={movie.Title}
                           className="img-fluid h-100"
                         />
-                      </Col>
-                    ))}
-                  </Row>
-                </Carousel.Item>
-              ))}
-            </Carousel>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+                      </Link>
+                    </Col>
+                  ))}
+                </Row>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
 export default FirstGallery;

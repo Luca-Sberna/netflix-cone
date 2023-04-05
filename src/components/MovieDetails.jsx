@@ -18,25 +18,24 @@ const MovieDetails = () => {
 
   const movieFetch = async () => {
     try {
-      const response = await fetch(
-        `https://www.omdbapi.com/?apikey=60534065&i=${params.imdbID}`,
+      const movieApi = await fetch(
+        `https://www.omdbapi.com/?apikey=60534065&i=${params.imdbId}`,
       );
-      if (response.ok) {
-        const data = await response.json();
+      if (movieApi.ok) {
+        const data = await movieApi.json();
         setMovie(data);
       } else {
         setErrorMessage(
-          `Errore nel caricamento dei contenuti. ERRORE: ${response.status}`,
+          `Errore nel caricamento dei contenuti. ERRORE: ${movieApi.status}`,
         );
       }
     } catch (error) {
       setErrorMessage(`FATAL ERROR: ${error.message}`);
     }
   };
-
   useEffect(() => {
     movieFetch();
-  }, [params.imdbID]);
+  }, []);
 
   return (
     <Container fluid>
@@ -56,7 +55,7 @@ const MovieDetails = () => {
                 className={`nav-link rounded text-light ${
                   location.pathname === "/details" ? "active" : ""
                 }`}
-                to="/movie-details/"
+                to={`/movie-details/${movie.imdbId}`}
               >
                 <img
                   src={movie.Poster}
@@ -112,10 +111,9 @@ const MovieDetails = () => {
           </Row>
         </>
       ) : (
-        <Row className="justify-content-center ">
-          <Spinner animation="border" role="status" variant="secondary">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
+        <Row className="justify-content-center d-flex text-center pt-5">
+          <Spinner animation="border" role="status" variant="danger"></Spinner>
+          <span className="sr-only text-light pt-3 fs-2">Loading...</span>
         </Row>
       )}
     </Container>

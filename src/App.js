@@ -23,7 +23,7 @@ function App() {
           <Route path='/' element={<TvShows />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/settings' element={<Settings />} />
-          <Route path='/movie-details/:movieId/' element={<MovieDetails />} />
+          <Route path='/movie-details/:imdbID/' element={<MovieDetails />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

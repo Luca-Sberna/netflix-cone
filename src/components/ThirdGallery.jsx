@@ -1,5 +1,6 @@
 import { Container, Row, Col, Carousel, Spinner } from "react-bootstrap";
 import { Component, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ThirdGallery = () => {
   const [movies, setMovies] = useState([]);
@@ -42,11 +43,13 @@ const ThirdGallery = () => {
                 <Row>
                   {movies.slice(index * 3, (index + 1) * 6).map((movie) => (
                     <Col xs={2} key={movie.imdbID}>
-                      <img
-                        src={movie.Poster}
-                        alt={movie.Title}
-                        className="img-fluid h-100"
-                      />
+                      <Link to={`/movie-details/${movie.imdbID}`}>
+                        <img
+                          src={movie.Poster}
+                          alt={movie.Title}
+                          className="img-fluid h-100"
+                        />
+                      </Link>
                     </Col>
                   ))}
                 </Row>

@@ -43,7 +43,7 @@ const FirstGallery = () => {
                 <Row>
                   {movies.slice(index * 3, (index + 1) * 6).map((movie) => (
                     <Col xs={2} key={movie.imdbID}>
-                      <Link to={`/movie-details/${movie.imdbId}`}>
+                      <Link to={`/movie-details/${movie.imdbID}`}>
                         {" "}
                         <img
                           src={movie.Poster}

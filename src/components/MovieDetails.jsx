@@ -15,6 +15,7 @@ const MovieDetails = () => {
   const params = useParams();
   const [movie, setMovie] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [comment, setComment] = useState(null);
 
   const movieFetch = async () => {
     try {

@@ -17,9 +17,15 @@ const MyNav = () => {
   const [openSearch, setOpenSearch] = useState(false);
   const [inputSearchValue, setInputSearchValue] = useState("");
   const location = useLocation();
+  const [isLinkBold, setIsLinkBold] = useState(false);
 
   const handleSearchOpenClick = () => {
     setOpenSearch(!openSearch);
+  };
+
+  const handleClick = (link) => {
+    setIsLinkBold(!isLinkBold);
+    console.log(`hai cliccato il link ${link}`);
   };
 
   return (
@@ -33,7 +39,7 @@ const MyNav = () => {
           <Navbar.Collapse>
             <Nav className="first-nav d-none d-md-flex align-items-center">
               <Link
-                className={`nav-link ${
+                className={`nav-link rounded-start ${
                   location.pathname === "/home" ? "active" : ""
                 }`}
                 to="/"
@@ -45,6 +51,8 @@ const MyNav = () => {
                   location.pathname === "/home" ? "active" : ""
                 }`}
                 to="/"
+                onClick={() => handleClick()}
+                style={{ fontWeight: isLinkBold ? "bold" : "normal" }}
               >
                 Tv Shows
               </Link>
